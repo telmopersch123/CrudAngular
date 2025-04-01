@@ -1,0 +1,15 @@
+<!-- MENSAGEM SUCCESS -->
+<div class="alert alert-success d-flex align-items-center estilizacaoCardSucess" [ngClass]="{'showCard': showCard}">
+  <i class="bi bi-check2-circle"></i>
+  <div>
+    {{mensagemAlteracao}}
+  </div>
+</div>
+<!-- MENSAGEM ALERT -->
+<div class="alert alert-warning d-flex align-items-center MensagemAlert" role="alert"
+  [ngClass]="{'showCardAlert': showCardAlert}">
+  <i class="bi bi-exclamation-triangle"></i>
+  <div>
+    {{mensagemAlert}}
+  </div>
+</div>

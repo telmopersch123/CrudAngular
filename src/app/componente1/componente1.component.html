@@ -1,0 +1,51 @@
+<app-componente2></app-componente2>
+
+<form [formGroup]="formulario">
+
+  <input type="number" formControlName="id" class="form-control" readonly [hidden]="true">
+
+  <div class="form-floating mb-3">
+    <input id="floatingInput" type="text" formControlName="nome" placeholder="nome" class="form-control"
+      [class.is-invalid]="formulario.controls['nome'].touched && getErrorMessage('nome')"
+      [class.is-valid]="formulario.controls['nome'].touched && !getErrorMessage('nome')" />
+    <label for="floatingInput">Nome</label>
+  </div>
+  <p *ngIf="getErrorMessage('nome')" class="alert-error">
+    {{ getErrorMessage('nome') }}
+  </p>
+
+
+  <div class="form-floating mb-3">
+    <input id="floatingInputNota1" type="number" formControlName="nota1" placeholder="Primeira Nota"
+      class="form-control nota" [class.is-invalid]="formulario.controls['nota1'].touched && getErrorMessage('nota1')"
+      [class.is-valid]="formulario.controls['nota1'].touched && !getErrorMessage('nota1')" />
+    <label for="floatingInputNota1">Nota 1</label>
+  </div>
+  <p *ngIf="getErrorMessage('nota1')" class="alert-error">
+    {{ getErrorMessage('nota1') }}
+  </p>
+
+
+  <div class="form-floating mb-3">
+    <input id="floatingInputNota2" type="number" formControlName="nota2" placeholder="Segunda Nota"
+      class="form-control nota" [class.is-invalid]="formulario.controls['nota2'].touched && getErrorMessage('nota2')"
+      [class.is-valid]="formulario.controls['nota2'].touched && !getErrorMessage('nota2')" />
+    <label for="floatingInputNota2">Nota 2</label>
+  </div>
+  <p *ngIf="getErrorMessage('nota2')" class="alert-error">
+    {{ getErrorMessage('nota2') }}
+  </p>
+
+
+  <input type="number" formControlName="media" class="form-control inputMedia" [readOnly]="true"
+    [hidden]="ControladoraInput">
+
+  @if (btnCadastrar) {
+  <input type="button" value="Cadastrar" (click)="cadastrarAluno()" class="btn btn-primary btnButton1"
+    [disabled]="formulario.invalid">
+  }@else {
+  <input type="button" value="Alterar" (click)="alterarAluno()" class="btn btn-primary" [disabled]="formulario.invalid">
+  <input type="button" value="Remover" (click)="removerAluno()" class="btn btn-primary removerbtn">
+  <input type="button" value="Cancelar" (click)="cancelar()" class="btn btn-primary cancelarbtn">
+  }
+</form>

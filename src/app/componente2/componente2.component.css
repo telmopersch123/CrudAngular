@@ -1,0 +1,69 @@
+/* Estilos gerais */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    gap: 50px;
+    margin-top: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.267);
+    background-color: rgba(255, 228, 196, 0.397);
+}
+
+/* Estilos dos botões */
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 50%; /* Define a largura do botão */
+}
+
+/* Botão Cadastrar */
+.btn-cadastrar {
+    background-color: #db880a;
+    color: white;
+}
+
+.btn-cadastrar:hover {
+    background-color: rgb(247, 184, 13);
+}
+
+/* Botão Alunos */
+.btn-alunos {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-alunos:hover {
+    background-color: #008cff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        gap: 20px; /* Reduz o espaço entre os itens */
+        margin-top: 20px; /* Reduz a margem superior */
+        flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+         width: 90%;
+    }
+
+    button {
+        width: 100%; /* Faz os botões ocuparem 100% da largura do contêiner */
+        padding: 12px 20px; /* Ajusta o padding para botões em telas menores */
+        font-size: 16px; /* Reduz o tamanho da fonte */
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        padding: 10px 15px; /* Ajusta ainda mais o padding para telas muito pequenas */
+        font-size: 14px; /* Diminui a fonte para telas muito pequenas */
+    }
+
+    .container {
+        gap: 10px; /* Diminui o espaço entre os itens em telas muito pequenas */
+    }
+}

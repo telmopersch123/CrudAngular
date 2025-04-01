@@ -1,0 +1,124 @@
+
+/*formulario*/
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+            margin-top: 50px;
+            gap: 15px;
+        }
+       .form-floating input:focus ~ label,
+      .form-floating input:not(:placeholder-shown) ~ label {
+        transform: translateY(-5px) scale(0.9);
+      }
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            pointer-events: all !important;
+        }
+
+        .nota{
+           cursor: cell !important;
+        }
+
+        .form-control:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+
+        .btn {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+      .btnButton1:disabled {
+        background-color: #367cf4 !important;
+        cursor: not-allowed !important; 
+        pointer-events:visible; 
+      }
+      .btnButton1:hover:disabled {
+        background-color: #367cf4 !important;
+        color: rgb(255, 255, 255) ;
+      }
+
+      .cancelarbtn{
+       background-color: #ff9900b9 !important; 
+       color: white;
+      }
+      .cancelarbtn:hover{
+       background-color: #ff9900 !important; 
+      }
+      .removerbtn{
+        background-color: #f44336d2 !important;  
+        color: white;
+      }
+      .removerbtn:hover{
+        background-color: #f44336 !important; 
+      }
+      
+        .btn-primary {
+            background-color: #4caf50;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+        .btnButton1 {
+            background-color: #367cf4 ;
+        }
+
+        .btnButton1:hover {
+            background-color: #2f81d3;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+.is-invalid {
+  border-color: #e74c3c !important;
+  box-shadow: 0px 0px 3px #e74c3c;
+}
+
+/* Estilização para válido (borda verde) */
+.is-valid {
+  border-color: #01662e !important;
+  box-shadow: 0px 0px 3px #01662e48;
+}
+.alert-error{
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: -10px;
+}
+input[readonly] {
+  background-color: #0000001a; /* Cor mais escura para readonly e disabled */
+  color: #00000083; /* Texto mais claro */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remover as setas no input type="number" no Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+

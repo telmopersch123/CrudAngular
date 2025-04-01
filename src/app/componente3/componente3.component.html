@@ -1,0 +1,32 @@
+<app-componente2></app-componente2>
+<div class="divTable">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Nota1</th>
+        <th>Nota2</th>
+        <th>Média</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of vetor; index as indice">
+        <td>{{indice + 1}}</td>
+        <td>{{v.nome}}</td>
+        <td>{{v.nota1}}</td>
+        <td>{{v.nota2}}</td>
+        <td title="Média">
+          <div class="estilizacaoMedia" [ngStyle]="getCellStyle(v.media)">
+            {{v.media}}
+          </div>
+        </td>
+        <td><button title="Editar" class="btn btn-primary btn-selecionar" (click)="selecionarAluno(indice)"><i
+              class="bi bi-pencil-square"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Card de sucesso (modal) -->
+<!-- <app-componente-success></app-componente-success> -->

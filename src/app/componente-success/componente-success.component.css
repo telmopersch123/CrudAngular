@@ -1,0 +1,52 @@
+.estilizacaoCardSucess {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  margin-top: 10px;
+  border-radius: 10px 0px 0px 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0px 0px 6px rgba(21, 247, 0, 0.692);
+  transform: translateX(100%); 
+  opacity: 0;  
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  display: flex;
+  gap: 10px;
+
+}
+.estilizacaoCardSucess>i{
+  font-size: 25px;
+}
+
+.showCard{
+  transform: translateX(0);
+  opacity: 1;
+} 
+
+.MensagemAlert{
+  display: flex;
+  gap: 20px;
+  width: 700px;
+  position: fixed;
+  bottom: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.37);
+  opacity: 0;  
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000;
+}
+.MensagemAlert>i{
+  font-size: 35px;
+}
+.showCardAlert{
+  opacity: 1;
+} 
+@media (max-width: 768px) {
+  .MensagemAlert{
+     width: 90%;
+  }
+}

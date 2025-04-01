@@ -1,0 +1,14 @@
+<div class="erro-modal" *ngIf="mostrarModal">
+  <div class="erro-card">
+    <div class="erro-header" [ngClass]="{'erro': tipoMensagem === 'erro', 'aviso': tipoMensagem === 'aviso'}">
+      <h3>{{tituloErro}}</h3>
+    </div>
+    <div class="erro-body">
+      <p [innerHTML]="mensagemErro"></p>
+    </div>
+    <div class="erro-footer">
+      <button class="erro-button" [ngClass]="{'erro': tipoMensagem === 'erro', 'aviso': tipoMensagem === 'aviso'}"
+        (click)="fecharModal()">Fechar</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+{
+  "alunos": [
+    {
+      "id": 23,
+      "nome": "JOAO",
+      "nota1": 2,
+      "nota2": 10,
+      "media": 6
+    },
+    {
+      "id": 24,
+      "nome": "pietro",
+      "nota1": 2,
+      "nota2": 5,
+      "media": 3.5
+    },
+    {
+      "id": 25,
+      "nome": "telmo",
+      "nota1": 5,
+      "nota2": 10,
+      "media": 7.5
+    },
+    {
+      "id": 26,
+      "nome": "joaoo",
+      "nota1": 5,
+      "nota2": 6,
+      "media": 5.5
+    },
+    {
+      "id": 27,
+      "nome": "joao121",
+      "nota1": 2,
+      "nota2": 3,
+      "media": 2.5
+    },
+    {
+      "id": 28,
+      "nome": "4321",
+      "nota1": 2,
+      "nota2": 3,
+      "media": 2.5
+    },
+    {
+      "id": 29,
+      "nome": "pedro434",
+      "nota1": 2,
+      "nota2": 10,
+      "media": 6
+    },
+    {
+      "id": 30,
+      "nome": "joao4324",
+      "nota1": 2,
+      "nota2": 3,
+      "media": 2.5
+    }
+  ]
+}

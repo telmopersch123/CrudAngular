@@ -1,0 +1,102 @@
+<header class="header">
+  <div class="logo">
+    <h1>Crud Média Escolar
+      <strong class="strongAngular">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+          <path
+            d="M185.7 268.1h76.2l-38.1-91.6-38.1 91.6zM223.8 32L16 106.4l31.8 275.7 176 97.9 176-97.9 31.8-275.7zM354 373.8h-48.6l-26.2-65.4H168.6l-26.2 65.4H93.7L223.8 81.5z" />
+        </svg>
+        Angular
+      </strong>
+    </h1>
+  </div>
+
+  <nav class="nav-links">
+    <button [hidden]="esconderSystemLoginRegister" class="btn" (click)="openLoginModal()">Login</button>
+    <button [hidden]="esconderSystemLoginRegister" class="btn" (click)="openRegisterModal()">{{ isUserRegistered ?
+      'Alterar Conta' : 'Registrar' }}</button>
+    <p (click)="openpopUpExit()" [hidden]="!esconderSystemLoginRegister">Usuário: {{username}}</p>
+    <div class="toggle-container">
+      <input type="checkbox" [(ngModel)]="isDarkMode" (click)="toggleDarkMode()" class="dark-mode-toggle">
+    </div>
+  </nav>
+</header>
+
+
+<!-- MODAL LOGIN -->
+<div class="modal" [class.show]="isLoginModalOpen" *ngIf="isLoginModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Login</h2>
+    <form class="login-register" (ngSubmit)="loginEvent($event)">
+      <div class="form-floating mb-3">
+        <input id="floatingInpuusuario" class="form-control" placeholder="Usuário" [(ngModel)]="username"
+          name="username" type="text" required>
+        <label id="floatingInputusuario">Usuário</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input id="floatingInputsenha" class="form-control" type="password" [(ngModel)]="password" name="password"
+          placeholder="senha" required>
+        <label id="floatingInputsenha">Digite sua senha</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL REGISTRO -->
+<div class="modal" [class.show]="isRegisterModalOpen" *ngIf="isRegisterModalOpen">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Registrar</h2>
+    <form class="login-register" (ngSubmit)="registerUser($event)" [formGroup]="formulario">
+
+
+      <div class="form-floating mb-3">
+        <input id="floatingInputnome" formControlName="usuario" class="form-control" placeholder="Nome de usuário"
+          type="text" name="usuario" required
+          [class.is-invalid]="formulario.controls['usuario'].touched && getErrorMessagem('usuario')"
+          [class.is-valid]="formulario.controls['usuario'].touched && !getErrorMessagem('usuario')">
+        <label for="floatingInputnome">Nome de Usuário</label>
+        <p *ngIf="getErrorMessagem('usuario')" class="alert-error">
+          {{ getErrorMessagem('usuario') }}
+        </p>
+      </div>
+
+
+      <div class="form-floating mb-3">
+        <input id="floatingInputsenhaReg" class="form-control" type="password" formControlName="password"
+          placeholder="Senha" name="password" required
+          [class.is-invalid]="formulario.controls['password'].touched && getErrorMessagem('password')"
+          [class.is-valid]="formulario.controls['password'].touched && !getErrorMessagem('password')">
+        <label for="floatingInputsenhaReg">Senha</label>
+        <p *ngIf="getErrorMessagem('password')" class="alert-error">
+          {{ getErrorMessagem('password') }}
+        </p>
+      </div>
+
+
+      <div class="form-floating mb-3">
+        <input id="floatingInputrepetirSenha" formControlName="confirmPassword" class="form-control" type="password"
+          placeholder="Repetir Senha" name="confirmPassword" required
+          [class.is-invalid]="formulario.controls['confirmPassword'].touched && getErrorMessagem('confirmPassword')"
+          [class.is-valid]="formulario.controls['confirmPassword'].touched && !getErrorMessagem('confirmPassword')">
+        <label for="floatingInputrepetirSenha">Repetir Senha</label>
+        <p *ngIf="getErrorMessagem('confirmPassword')" class="alert-error">
+          {{ getErrorMessagem('confirmPassword') }}
+        </p>
+      </div>
+
+      <button type="submit" class="btn btn-primary botaoregistrar" [disabled]="formulario.invalid">Registrar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Popup com o nome do usuário e o botão de sair -->
+<div [hidden]="!ispopUpExit" class="popup-overlay" (click)="closePopup($event)">
+  <div class="popup-content" (click)="$event.stopPropagation()"> <!-- Impede o clique no conteúdo -->
+    <p>Bem-vindo, {{ username }}!</p>
+    <button class="btn btn-secondary" (click)="logout()">Sair</button>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+.btn-selecionar{
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.estilizacaoMedia{
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.349);
+  transition: all 0.1s ease-in-out;
+  transform: scale(1);
+}
+.estilizacaoMedia:hover{
+  transform: scale(1.2);
+  box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 1px 4px rgba(0, 0, 0, 0.6);
+}
+.divTable{
+  position: relative;
+  width: 100%;
+}        
+table {
+    margin-top: 50px;
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+thead {
+    background-color: #4caf50;
+    color: #fff;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+    
+}
+
+th {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
