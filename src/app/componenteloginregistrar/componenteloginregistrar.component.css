@@ -167,9 +167,11 @@ body.dark-mode nav p {
   background: rgba(0, 0, 0, 0.7);
   z-index: 999;
   animation: fadeIn 0.3s ease-in-out;
- 
+  pointer-events: none;
 }
-
+.modal.show .modal-content {
+  pointer-events: auto; /* Apenas o conteúdo do modal captura cliques */
+}
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -188,6 +190,8 @@ body.dark-mode nav p {
   animation: slideDown 0.3s ease-in-out;
   border-top: 5px solid green;
   border-bottom: 3px solid green;
+  position: relative;
+  z-index: 999;
 }
 
 
@@ -291,6 +295,15 @@ input {
   background-color: #007bff;
   color: white;
   transition: background-color 0.3s ease;
+}
+.botaoregistrar {
+  position: relative; /* Garante que o botão fique acima de outros elementos */
+  z-index: 1000; /* Aumenta a prioridade no empilhamento */
+  padding: 10px 20px; /* Aumenta a área clicável */
+  pointer-events: auto; /* Garante que o botão receba cliques */
+  display: inline-block; /* Evita que o botão seja afetado por layouts estranhos */
+  width: 100%; /* Opcional: faz o botão ocupar toda a largura disponível */
+  cursor: pointer; /* Mostra que é clicável */
 }
 .botaoregistrar:disabled {
   cursor: not-allowed !important; /* Altera o cursor para o estilo "não permitido" */
