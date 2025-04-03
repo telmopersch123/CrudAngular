@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ServicoAluno } from '../services/aluno/aluno.service';
 import { DarkModeService } from '../services/backBody/darkmode.service';
@@ -10,7 +10,7 @@ import { SuccessMessageService } from '../services/mensagem/mensagem.service';
   imports: [FormsModule, CommonModule,ReactiveFormsModule ],
   encapsulation: ViewEncapsulation.None,
   templateUrl: './componenteloginregistrar.component.html',
-  styleUrl: './componenteloginregistrar.component.css'
+  styleUrls: ['./componenteloginregistrar.component.css', './componenteloginregistrarDarkMode.component.css']
 })
 export class ComponenteloginregistrarComponent {
   isUserRegistered: boolean = false;
@@ -18,10 +18,10 @@ export class ComponenteloginregistrarComponent {
   esconderSystemLoginRegister: boolean = false;
   ispopUpExit: boolean = false;
   formulario: FormGroup;
-  constructor(private darkModeService: DarkModeService, private services: ServicoAluno, private successMessageService: SuccessMessageService, @Inject(PLATFORM_ID) private platformId: object) { }
+  constructor(private darkModeService: DarkModeService, private services: ServicoAluno, private successMessageService: SuccessMessageService, @Inject(PLATFORM_ID) private platformId: object, private cdr: ChangeDetectorRef) { }
   ngOnInit() {
     this.validarBotoes()
-    if (typeof localStorage !== 'undefined') {
+    if (typeof localStorage !== 'undefined' && window.localStorage) {
       this.username = localStorage.getItem('user') || '';
     }
     this.checkIfUserExists();
@@ -41,18 +41,22 @@ export class ComponenteloginregistrarComponent {
     })
   }
   checkIfUserExists() {
-    let storedUser;
-     let storedPass;
-    if (typeof localStorage !== 'undefined') {
-       storedUser = localStorage.getItem('user');
-       storedPass = localStorage.getItem('password');
-    }
-    this.isUserRegistered = storedUser?.trim() !== '' && storedPass?.trim() !== '';
-
+   if (typeof localStorage !== 'undefined' && window.localStorage) {
+    const storedUser = localStorage.getItem('user');
+    const storedPass = localStorage.getItem('password');
+    this.isUserRegistered = !!(storedUser && storedPass && storedUser.trim() !== '' && storedPass.trim() !== '');
+    console.log('localStorage disponível:', { storedUser, storedPass });
+  } else {
+    console.error('localStorage não está disponível');
+  }
+ 
   }
   validarBotoes() {
     if (isPlatformBrowser(this.platformId)) {
-      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      let isLoggedIn;
+      if (typeof window !== 'undefined' && window.localStorage) {
+        isLoggedIn = localStorage.getItem('isLoggedIn');
+      }
       if (isLoggedIn === 'true') {
         this.esconderSystemLoginRegister = true;
       }
@@ -82,8 +86,12 @@ export class ComponenteloginregistrarComponent {
   confirmPassword: string = '';
   loginEvent(event: Event) {
     event.preventDefault();
-    const storedUser = localStorage.getItem('user');
-    const storedPass = localStorage.getItem('password');
+    let storedUser;
+    let storedPass;
+    if (typeof window !== 'undefined' && window.localStorage) {
+       storedUser = localStorage.getItem('user');
+       storedPass = localStorage.getItem('password');
+    }
     if (!storedUser || !storedPass || storedUser.trim() === '' || storedPass.trim() === '') {
       this.successMessageService.ativarAnimacaoAlert()
       this.successMessageService.alterarMensagemAlert("Crie uma conta antes de Logar, Porfavor!")
@@ -102,6 +110,10 @@ export class ComponenteloginregistrarComponent {
 
   registerUser(event: Event) {
     event.preventDefault();
+  console.log('Formulário válido?', !this.formulario.invalid);
+  console.log('Valores do formulário:', this.formulario.value);
+  console.log('Erros do formulário:', this.formulario.errors);
+
     if (!this.formulario.invalid) {
       if (!this.username || !this.password || !this.confirmPassword) {
         this.successMessageService.ativarAnimacaoAlert()
@@ -113,14 +125,16 @@ export class ComponenteloginregistrarComponent {
         this.successMessageService.alterarMensagemAlert("As senhas não coincidem!")
         return;
       }
-
-      localStorage.setItem('user', this.username);
-      localStorage.setItem('password', this.password);
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('user', this.username);
+        localStorage.setItem('password', this.password);
+      }
       this.services.setLoginStatus(true);
       this.successMessageService.mensagemCardFunction("Olá", "Seja Bem-vindo <strong class='strongName'>" + this.username + "</strong>!", "aviso");
 
       this.validarBotoes();
       this.closeModal();
+      this.cdr.detectChanges();
     }
   }
 
