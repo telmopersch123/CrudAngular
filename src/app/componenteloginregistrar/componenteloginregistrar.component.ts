@@ -1,5 +1,5 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef, Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ServicoAluno } from '../services/aluno/aluno.service';
 import { DarkModeService } from '../services/backBody/darkmode.service';
@@ -18,7 +18,7 @@ export class ComponenteloginregistrarComponent {
   esconderSystemLoginRegister: boolean = false;
   ispopUpExit: boolean = false;
   formulario: FormGroup;
-  constructor(private darkModeService: DarkModeService, private services: ServicoAluno, private successMessageService: SuccessMessageService, @Inject(PLATFORM_ID) private platformId: object, private cdr: ChangeDetectorRef) { }
+  constructor(private darkModeService: DarkModeService, private services: ServicoAluno, private successMessageService: SuccessMessageService, @Inject(PLATFORM_ID) private platformId: object) { }
   ngOnInit() {
     this.validarBotoes()
     if (typeof localStorage !== 'undefined' && window.localStorage) {
@@ -45,14 +45,10 @@ export class ComponenteloginregistrarComponent {
     const storedUser = localStorage.getItem('user');
     const storedPass = localStorage.getItem('password');
     this.isUserRegistered = !!(storedUser && storedPass && storedUser.trim() !== '' && storedPass.trim() !== '');
-    console.log('localStorage disponível:', { storedUser, storedPass });
-  } else {
-    console.error('localStorage não está disponível');
-  }
+  } 
  
   }
   validarBotoes() {
-    if (isPlatformBrowser(this.platformId)) {
       let isLoggedIn;
       if (typeof window !== 'undefined' && window.localStorage) {
         isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -60,7 +56,7 @@ export class ComponenteloginregistrarComponent {
       if (isLoggedIn === 'true') {
         this.esconderSystemLoginRegister = true;
       }
-    }
+  
     return true;
   }
   toggleDarkMode() {
@@ -110,9 +106,6 @@ export class ComponenteloginregistrarComponent {
 
   registerUser(event: Event) {
     event.preventDefault();
-  console.log('Formulário válido?', !this.formulario.invalid);
-  console.log('Valores do formulário:', this.formulario.value);
-  console.log('Erros do formulário:', this.formulario.errors);
 
     if (!this.formulario.invalid) {
       if (!this.username || !this.password || !this.confirmPassword) {
@@ -134,7 +127,6 @@ export class ComponenteloginregistrarComponent {
 
       this.validarBotoes();
       this.closeModal();
-      this.cdr.detectChanges();
     }
   }
 
