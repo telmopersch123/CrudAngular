@@ -87,8 +87,8 @@
           {{ getErrorMessagem('confirmPassword') }}
         </p>
       </div>
-      <!-- [disabled]="formulario.invalid" -->
-      <button type="submit" class="btn btn-primary botaoregistrar">Registrar</button>
+
+      <button type="submit" class="btn btn-primary botaoregistrar" [disabled]="formulario.invalid">Registrar</button>
     </form>
   </div>
 </div>
