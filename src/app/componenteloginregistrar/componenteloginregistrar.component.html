@@ -29,7 +29,7 @@
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
     <h2>Login</h2>
-    <div class="login-register" (ngSubmit)="loginEvent($event)">
+    <form class="login-register" (ngSubmit)="loginEvent($event)">
       <div class="form-floating mb-3">
         <input id="floatingInpuusuario" class="form-control" placeholder="Usuário" [(ngModel)]="username"
           name="username" type="text" required>
@@ -41,7 +41,7 @@
         <label id="floatingInputsenha">Digite sua senha</label>
       </div>
       <button type="submit" class="btn btn-primary">Entrar</button>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -50,7 +50,7 @@
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
     <h2>Registrar</h2>
-    <div class="login-register" (ngSubmit)="registerUser($event)" [formGroup]="formulario">
+    <form class="login-register" (ngSubmit)="registerUser($event)" [formGroup]="formulario">
 
 
       <div class="form-floating mb-3">
@@ -89,7 +89,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary botaoregistrar" [disabled]="formulario.invalid">Registrar</button>
-    </div>
+    </form>
   </div>
 </div>
 
