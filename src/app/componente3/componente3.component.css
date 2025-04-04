@@ -37,7 +37,7 @@ table {
     background-color: #fff;
     border-radius: 12px;
     overflow: hidden;
-    position: absolute;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
 }

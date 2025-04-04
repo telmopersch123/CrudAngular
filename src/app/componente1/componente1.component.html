@@ -1,5 +1,3 @@
-<app-componente2></app-componente2>
-
 <form [formGroup]="formulario">
 
   <input type="number" formControlName="id" class="form-control" readonly [hidden]="true">
@@ -44,8 +42,12 @@
   <input type="button" value="Cadastrar" (click)="cadastrarAluno()" class="btn btn-primary btnButton1"
     [disabled]="formulario.invalid">
   }@else {
-  <input type="button" value="Alterar" (click)="alterarAluno()" class="btn btn-primary" [disabled]="formulario.invalid">
-  <input type="button" value="Remover" (click)="removerAluno()" class="btn btn-primary removerbtn">
-  <input type="button" value="Cancelar" (click)="cancelar()" class="btn btn-primary cancelarbtn">
+  <div class="buttonsActions">
+    <input type="button" value="Alterar" (click)="alterarAluno()" class="btn btn-primary"
+      [disabled]="formulario.invalid">
+    <input type="button" value="Remover" (click)="removerAluno()" class="btn btn-primary removerbtn">
+    <input type="button" value="Cancelar" (click)="cancelar()" class="btn btn-primary cancelarbtn">
+  </div>
   }
 </form>
+<app-componente2></app-componente2>

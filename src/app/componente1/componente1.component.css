@@ -10,7 +10,7 @@
             flex-direction: column;
             justify-content: center;
             margin: auto;
-            gap: 15px;
+            margin-top: 20px;
         }
        .form-floating input:focus ~ label,
       .form-floating input:not(:placeholder-shown) ~ label {
@@ -44,7 +44,12 @@
             font-size: 16px;
             transition: 0.3s ease;
         }
-
+.buttonsActions{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 5px;
+}
       .btnButton1:disabled {
         background-color: #367cf4 !important;
         cursor: not-allowed !important; 
