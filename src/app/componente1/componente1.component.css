@@ -10,7 +10,6 @@
             flex-direction: column;
             justify-content: center;
             margin: auto;
-            margin-top: 50px;
             gap: 15px;
         }
        .form-floating input:focus ~ label,
@@ -28,6 +27,7 @@
         .nota{
            cursor: cell !important;
         }
+
 
         .form-control:focus {
             border-color: #4a90e2;
@@ -80,6 +80,7 @@
 
         .btnButton1 {
             background-color: #367cf4 ;
+            width: 100%;
         }
 
         .btnButton1:hover {

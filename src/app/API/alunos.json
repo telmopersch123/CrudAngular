@@ -1,13 +1,6 @@
 {
   "alunos": [
     {
-      "id": 23,
-      "nome": "JOAO",
-      "nota1": 2,
-      "nota2": 10,
-      "media": 6
-    },
-    {
       "id": 24,
       "nome": "pietro",
       "nota1": 2,
@@ -44,10 +37,24 @@
     },
     {
       "id": 30,
-      "nome": "joao4324",
-      "nota1": 2,
-      "nota2": 3,
-      "media": 2.5
+      "nome": "Joao Ramos",
+      "nota1": 10,
+      "nota2": 10,
+      "media": 10
+    },
+    {
+      "id": 31,
+      "nome": "Pedroca",
+      "nota1": 5,
+      "nota2": 10,
+      "media": 7.5
+    },
+    {
+      "id": 32,
+      "nome": "Virtudes",
+      "nota1": 10,
+      "nota2": 9,
+      "media": 9.5
     }
   ]
 }

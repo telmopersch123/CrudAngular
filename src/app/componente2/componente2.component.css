@@ -4,10 +4,11 @@
     justify-content: space-between;
     padding: 10px 10px;
     gap: 50px;
-    margin-top: 50px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.267);
     background-color: rgba(255, 228, 196, 0.397);
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 /* Estilos dos botões */
