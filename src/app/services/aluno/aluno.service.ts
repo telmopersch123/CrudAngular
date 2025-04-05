@@ -9,7 +9,7 @@ import { Aluno } from '../../Model/Aluno';
 })
 export class ServicoAluno {
   private isLoggedIn: boolean = false;
-  url: string = 'http://localhost:3000/alunos';
+  url: string = 'https://apiangularcrud.onrender.com/alunos';
 
   private btnCadastrarSubject = new BehaviorSubject<boolean>(true); // valor inicial
   private controladoraInputSubject = new BehaviorSubject<boolean>(true); // valor inicial
